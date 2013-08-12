@@ -8,7 +8,10 @@ var client = tumblr.createClient(require('./.tumblr.json'));
 var post_to_tumblr = function (item) {
 	console.log('Posting to Tumblr');
 	client.post('funny.reddlr.com', { type: 'photo', caption: item.title, "source": item.url }, function (err, data) {
-		if (data == undefined) { throw "Tumblr rejected post" };
+		if (data == undefined) {
+			console.log(item);
+			throw "Tumblr rejected post"; 
+		};
 		console.log(data); // PRINT POST META
   	queue.del(item.id, function(error, body) { console.log("Removed from the queue"); });
 	});
