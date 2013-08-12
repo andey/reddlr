@@ -1,12 +1,11 @@
 var iron_mq = require('iron_mq');
 var imq = new iron_mq.Client(require('./.iron.json'));
 var queue = imq.queue("tumblr");
-var requestify = require('requestify');
+var http = require('http');
 var MongoClient = require('mongodb').MongoClient;
 var database_string = require('./.mongolab.json');
 var database = null;
 var collections = null;
-
 
 // IS THE POST SOMETHING WE WANT?
 var is_valid = function(data) {	
@@ -37,8 +36,7 @@ var find_record = function(data) {
 // LOOP THROUGH THE REDDIT ITEMS	
 var process_items = function (response) {
 	console.log('Processing Items');
-    body = response.getBody();
-	children = body["data"]["children"];
+	children = response["data"]["children"];
 
 	for (var i = 0; i < children.length; i++) { 
 		find_record(children[i]["data"]);
@@ -50,7 +48,18 @@ var process_items = function (response) {
 // FETCH FROM REDDIT
 var fetch_items = function () {
 	console.log('Fetch Reddit Items');
-	requestify.get('http://www.reddit.com/r/funny.json').then(process_items);
+	var data = '';
+	http.get('http://www.reddit.com/r/funny.json', function(res) { 
+
+		res.on('data', function(chunk) {
+			data += chunk.toString();
+		});
+
+		res.on('end', function(){
+			process_items(JSON.parse(data));
+		});
+		
+	});
 }
 
 // CONNECTED TO DB
@@ -73,5 +82,4 @@ var start = function () {
 	MongoClient.connect(database_string.url, connected);
 }
 
-console.log('Node Version: ' + process.version);
 start();
