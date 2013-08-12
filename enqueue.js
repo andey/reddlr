@@ -48,7 +48,6 @@ var process_items = function (response) {
 	}
 }
 
-
 // FETCH FROM REDDIT
 var fetch_items = function () {
 	console.log('Fetch Reddit Items');
@@ -92,8 +91,8 @@ var exit = function () {
 // START
 var start = function () {
 	console.log('Start');
+	setInterval(function(){should_i_exit();},1000);
 	MongoClient.connect(database_string.url, connected);
 }
 
 start();
-setInterval(function(){should_i_exit();},1000);
