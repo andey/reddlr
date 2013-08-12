@@ -8,7 +8,7 @@ var client = tumblr.createClient(require('./.tumblr.json'));
 //POST TO TUMBLR, AND POP OFF QUEUE
 var post_to_tumblr = function (item) {
 	console.log('Posting to Tumblr');
-	client.post('sk3tchy-com.tumblr.com', { type: 'photo', caption: item.title, "source": item.url }, function (err, data) {
+	client.post('funny.reddlr.com', { type: 'photo', caption: item.title, "source": item.url }, function (err, data) {
 		console.log(data);
     	queue.del(item.id, function(error, body) { console.log("Removed from the queue"); });
 	});
