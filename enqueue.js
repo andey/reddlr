@@ -72,4 +72,6 @@ var start = function () {
 	console.log('Start');
 	MongoClient.connect(database_string.url, connected);
 }
+
+console.log('Node Version: ' + process.version);
 start();

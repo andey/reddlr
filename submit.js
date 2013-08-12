@@ -26,4 +26,5 @@ var process = function (error, item) {
 };
 
 //START
+console.log('Node Version: ' + process.version);
 queue.get({}, process);
