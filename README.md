@@ -12,7 +12,8 @@ Setup
 ------
     # npm install
 
-Create Credentials Files
+_Create Credentials Files_
+    
     .iron.json {"token":"XXX","project_id":"XXX"}
     .mongolab.json {"url":"mongodb://user:password@mongolab.com:9999/db"}
     .tumblr.json {"consumer_key":"XXX","consumer_secret":"XXX","token":"XXX","token_secret":"XXX"}
