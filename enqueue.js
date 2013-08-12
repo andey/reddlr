@@ -7,6 +7,9 @@ var database_string = require('./.mongolab.json');
 var database = null;
 var collections = null;
 
+var number_of_items = -1;
+var items_processed = 0;
+
 // IS THE POST SOMETHING WE WANT?
 var is_valid = function(data) {	
 	if (data.domain == "http://i.imgur.com") {
@@ -19,7 +22,7 @@ var is_valid = function(data) {
 // INSERT INTO THE DATABASE AND QUEUE
 var insert_and_enqueue = function(data) {
 	collection.insert(data, function(err, docs) {});
-	queue.post({body: JSON.stringify(data)}, function(error, body) { console.log(body); });
+	queue.post({body: JSON.stringify(data)}, function(error, body) { console.log(body); items_processed += 1; });
 }
 
 // CHECK IF POSTED IN THE PAST
@@ -28,7 +31,8 @@ var find_record = function(data) {
 		if (results.length == 0) {
 			insert_and_enqueue(data);
 		} else {
-			console.log(results.length);
+			console.log('skip');
+			items_processed += 1;
 		}
 	});      
 }
@@ -37,11 +41,11 @@ var find_record = function(data) {
 var process_items = function (response) {
 	console.log('Processing Items');
 	children = response["data"]["children"];
+	number_of_items = children.length;
 
 	for (var i = 0; i < children.length; i++) { 
 		find_record(children[i]["data"]);
 	}
-	exit();
 }
 
 
@@ -71,9 +75,18 @@ var connected = function (err, db) {
 	fetch_items();	
 }
 
+// CHECKING IF ALL ITEMS ARE DONE
+var should_i_exit = function () {
+	if (number_of_items == items_processed) {
+		exit();	
+	}	
+}
+
 // CLOSE DATABASE CONNECTION
 var exit = function () {
-	//database.close();
+	console.log('Exiting');	
+	database.close();
+	process.exit(0);
 }
 
 // START
@@ -83,3 +96,4 @@ var start = function () {
 }
 
 start();
+setInterval(function(){should_i_exit();},1000);
