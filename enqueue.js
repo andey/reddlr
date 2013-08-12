@@ -1,12 +1,17 @@
-var iron_mq = require('iron_mq');
-var imq = new iron_mq.Client(require('./.iron.json'));
-var queue = imq.queue("tumblr");
+var config = require('./config.json');
 var http = require('http');
+
+// INITIALIZE IronMQ 
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client(config.iron_mq);
+var queue = imq.queue("tumblr");
+
+// INITIALIZE MongoDB
 var MongoClient = require('mongodb').MongoClient;
-var database_string = require('./.mongolab.json');
+
+// GLOBAL VARIABLES
 var database = null;
 var collections = null;
-
 var number_of_items = -1;
 var items_processed = 0;
 
@@ -92,7 +97,7 @@ var exit = function () {
 var start = function () {
 	console.log('Start');
 	setInterval(function(){should_i_exit();},1000);
-	MongoClient.connect(database_string.url, connected);
+	MongoClient.connect(config.mongodb, connected);
 }
 
 start();

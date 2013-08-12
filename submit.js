@@ -1,8 +1,13 @@
+var config = require('./config.json');
+
+// INITIALIZE IronMQ
 var iron_mq = require('iron_mq');
-var imq = new iron_mq.Client(require('./.iron.json'));
+var imq = new iron_mq.Client(config.iron_mq);
 var queue = imq.queue("tumblr");
+
+// INITIALIZE Tumblr Client
 var tumblr = require('tumblr.js');
-var client = tumblr.createClient(require('./.tumblr.json'));
+var client = tumblr.createClient(config.tumblr);
 
 //POST TO TUMBLR, AND POP OFF QUEUE
 var post_to_tumblr = function (item) {

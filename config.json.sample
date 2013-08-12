@@ -1,0 +1,20 @@
+{
+	// IronMQ
+	// http://www.iron.io
+	"iron_mq":{
+		"token":"XXX",
+		"project_id":"XXX"
+	},
+
+	// MongoDB
+	"mongodb":"mongodb://user:password@database.com:12345/database",
+
+	// Tumblr
+	//http://www.tumblr.com/oauth/apps
+	"tumblr":{
+		"consumer_key":"XXX",
+		"consumer_secret":"XXX",
+		"token":"XXX",
+		"token_secret":"XXX"
+	}
+}

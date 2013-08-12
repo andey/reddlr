@@ -1,4 +1,2 @@
 node_modules
-.iron.json
-.mongolab.json
-.tumblr.json
+config.json

@@ -1,6 +1,5 @@
 runtime "node"
 file "package.json"
-file ".iron.json"
-file ".tumblr.json"
+file "config.json"
 dir "node_modules"
 exec "submit.js"
