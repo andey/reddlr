@@ -10,11 +10,12 @@ Dependencies:
 
 Setup
 ------
-    npm install
+    # npm install
 
-Enqueue reddit images
-    iron_worker run enqueue.worker
+Enqueue
+------    
+    # iron_worker run enqueue.worker
     
-Submit images from Queue
-    iron_worker run submit.worker
-
+Submit
+------   
+    # iron_worker run submit.worker
