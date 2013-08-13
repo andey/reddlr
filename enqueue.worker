@@ -3,4 +3,3 @@ file "package.json"
 file "config.json"
 dir "node_modules"
 exec "enqueue.js"
-timeout 30
