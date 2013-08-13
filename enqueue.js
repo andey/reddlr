@@ -17,7 +17,7 @@ var items_processed = 0;
 
 // IS THE POST SOMETHING WE WANT?
 var is_valid = function(data) {	
-	if (data.domain == "http://i.imgur.com") {
+	if (data.domain == "i.imgur.com") {
 		return true;
 	} else {
 		return false;
@@ -33,7 +33,7 @@ var insert_and_enqueue = function(data) {
 // CHECK IF POSTED IN THE PAST
 var find_record = function(data) {
 	collection.find({id: data.id}).toArray(function(err, results) {
-		if (results.length == 0) {
+		if (results.length == 0 && is_valid(data)) {
 			insert_and_enqueue(data);
 		} else {
 			console.log('skip');
