@@ -12,7 +12,7 @@ var client = tumblr.createClient(config.tumblr);
 //POST TO TUMBLR, AND POP OFF QUEUE
 var post_to_tumblr = function (item) {
 	console.log('Posting to Tumblr');
-	client.post('funny.reddlr.com', { type: 'photo', caption: item.title, "source": item.url }, function (err, data) {
+	client.post('funny.reddlr.com', { type: 'photo', caption: item.title, "source": item.url, "tags": 'reddlr, funny' }, function (err, data) {
 		if (data == undefined) {
 			console.log(item);
 			throw "Tumblr rejected post"; 
