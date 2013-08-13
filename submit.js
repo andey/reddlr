@@ -12,9 +12,10 @@ var client = tumblr.createClient(config.tumblr);
 //POST TO TUMBLR, AND POP OFF QUEUE
 var post_to_tumblr = function (item) {
 	console.log('Posting to Tumblr');
-	client.post('funny.reddlr.com', { type: 'photo', caption: item.title, "source": item.url, "tags": 'reddlr, funny' }, function (err, data) {
+	body = JSON.parse(item.body);
+	client.post('funny.reddlr.com', { type: 'photo', caption: body.title, "source": body.url, "tags": 'reddlr, funny' }, function (err, data) {
 		if (data == undefined) {
-			console.log(item);
+			console.log(body);
 			throw "Tumblr rejected post"; 
 		};
 		console.log(data); // PRINT POST META
@@ -26,7 +27,7 @@ var post_to_tumblr = function (item) {
 var process = function (error, item) {
 	if (item) {
 		console.log("Processing: " + String(item.id));
-		post_to_tumblr(JSON.parse(item.body));
+		post_to_tumblr(item);
 	} else {
 		console.log("No item in the queue");
 	}	
