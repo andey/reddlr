@@ -11,5 +11,22 @@
 		"consumer_secret":"XXX",
 		"token":"XXX",
 		"token_secret":"XXX"
-	}
+	},
+
+	"subreddits": [
+		{"r": "funny", "tags": "reddlr, funny"},
+		{"r": "pics", "tags": "reddlr, pics, picture"},
+		{"r": "WTF", "tags": "reddlr, wtf, omg"},
+		["r": "aww", "tags": "aww, cute"},
+		{"r": "gifs", "tags": "reddlr, gif"},
+		{"r": "EarthPorn", "tags": "reddlr, earth, landscape, nature, world"},
+		{"r": "gonewild", "tags": "reddlrX, vogeur, ameteur, nude, selfie"},
+		{"r": "food", "tags": "reddlr, food, cooking, cuisine, snack"}		 
+	],
+
+	"whitelist": [
+		{"domain": "i.imgur.com", "type": "photo"},
+		{"domain": "youtube.com", "type": "video"},
+		{"domain": "youtu.be", "type": "video"}		 
+	]
 }
