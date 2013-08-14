@@ -14,14 +14,17 @@ var database = null;
 var collections = null;
 var number_of_items = -1;
 var items_processed = 0;
+var subreddit = config.subreddits[Math.floor(Math.random()*config.subreddits.length)] 
 
-// IS THE POST SOMETHING WE WANT?
-var is_valid = function(data) {	
-	if (data.domain == "i.imgur.com") {
-		return true;
-	} else {
-		return false;
+// IS DOMAIN ALLOWED?
+var is_valid = function(data) {
+	result = false;
+	for (i = 0; i < config.whitelist.length; i++) {
+		if (data.domain == config.whitelist[i].domain) {
+			result = true;
+		}
 	}
+	return result;
 }
 
 // INSERT INTO THE DATABASE AND QUEUE
@@ -33,10 +36,12 @@ var insert_and_enqueue = function(data) {
 // CHECK IF POSTED IN THE PAST
 var find_record = function(data) {
 	collection.find({id: data.id}).toArray(function(err, results) {
+		console.log('Looking for Record: ' + data.id);
 		if (results.length == 0 && is_valid(data)) {
+			console.log('Insert it!');
 			insert_and_enqueue(data);
 		} else {
-			console.log('skip');
+			console.log('Skip: ' + data.domain);
 			items_processed += 1;
 		}
 	});      
@@ -48,7 +53,7 @@ var process_items = function (response) {
 	children = response["data"]["children"];
 	number_of_items = children.length;
 
-	for (var i = 0; i < children.length; i++) { 
+	for (var i = 0; i < children.length; i++) {
 		find_record(children[i]["data"]);
 	}
 }
@@ -57,7 +62,7 @@ var process_items = function (response) {
 var fetch_items = function () {
 	console.log('Fetch Reddit Items');
 	var data = '';
-	http.get('http://www.reddit.com/r/funny.json', function(res) { 
+	http.get('http://www.reddit.com/r/' + subreddit.r + '.json', function(res) { 
 
 		res.on('data', function(chunk) {
 			data += chunk.toString();
@@ -96,6 +101,7 @@ var exit = function () {
 // START
 var start = function () {
 	console.log('Start');
+	console.log('subreddit: ' + subreddit.r);
 	setInterval(function(){should_i_exit();},1000);
 	MongoClient.connect(config.mongodb, connected);
 }
