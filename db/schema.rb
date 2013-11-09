@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109213601) do
+ActiveRecord::Schema.define(version: 20131109225848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,5 +48,51 @@ ActiveRecord::Schema.define(version: 20131109213601) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "api_keys", force: true do |t|
+    t.string   "username",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_types", force: true do |t|
+    t.string   "name",           null: false
+    t.string   "tumblr_type_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "reddit_id",       null: false
+    t.string   "title"
+    t.integer  "sub_id"
+    t.string   "tumblr_id"
+    t.integer  "content_type_id"
+    t.datetime "submitted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subs", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "css"
+    t.text     "js"
+  end
+
+  create_table "tumblr_types", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "whitelists", force: true do |t|
+    t.string   "name",           null: false
+    t.string   "regex",          null: false
+    t.integer  "tumblr_type_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
