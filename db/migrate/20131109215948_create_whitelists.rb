@@ -1,8 +1,9 @@
 class CreateWhitelists < ActiveRecord::Migration
   def change
     create_table :whitelists do |t|
-      t.string :name, null: false
-      t.string :regex, null: false
+      t.string :domain, null: false
+      t.string :match
+      t.string :replace
       t.integer :tumblr_type_id, null: false
       t.timestamps
     end

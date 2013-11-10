@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109225848) do
+ActiveRecord::Schema.define(version: 20131110030333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -60,17 +61,21 @@ ActiveRecord::Schema.define(version: 20131109225848) do
     t.string   "tumblr_type_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url_match"
   end
 
   create_table "posts", force: true do |t|
     t.string   "reddit_id",       null: false
-    t.string   "title"
-    t.integer  "sub_id"
+    t.string   "title",           null: false
+    t.integer  "sub_id",          null: false
     t.string   "tumblr_id"
     t.integer  "content_type_id"
     t.datetime "submitted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "json"
+    t.integer  "whitelist_id"
+    t.boolean  "garbage"
   end
 
   create_table "subs", force: true do |t|
@@ -88,11 +93,13 @@ ActiveRecord::Schema.define(version: 20131109225848) do
   end
 
   create_table "whitelists", force: true do |t|
-    t.string   "name",           null: false
-    t.string   "regex",          null: false
+    t.string   "domain",         null: false
+    t.string   "match"
+    t.string   "replace"
     t.integer  "tumblr_type_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url_match"
   end
 
 end

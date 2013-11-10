@@ -8,6 +8,8 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'awesome_print'
+gem 'httparty'
 
 group :doc do
   gem 'sdoc', require: false
