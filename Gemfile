@@ -13,6 +13,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'httparty'
 gem 'tumblr_client'
 gem 'crack'
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'annotate'
