@@ -8,7 +8,7 @@ ActiveAdmin.register Post do
     column :whitelist
     column :content_type_id
     column :garbage
-    column :processed_at
+    column :submitted_at
     default_actions
   end
 end
