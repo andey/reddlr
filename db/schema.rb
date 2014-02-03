@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110041030) do
+ActiveRecord::Schema.define(version: 20140203040038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20131110041030) do
 
   create_table "content_types", force: true do |t|
     t.string   "name",           null: false
-    t.string   "tumblr_type_id", null: false
+    t.integer  "tumblr_type_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url_match"
