@@ -6,5 +6,10 @@ Reddlr::Application.routes.draw do
       get 'comments'
     end
   end
-  root to: 'admin/dashboard#index'
+  resources :subreddits do
+    member do
+      get 'stylesheet'
+      get 'javascript'
+    end
+  end
 end
