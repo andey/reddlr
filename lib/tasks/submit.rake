@@ -12,7 +12,8 @@ task :submit => :environment do
     client = ApiKey.find(2).tumblr_client
 
     begin
-      case post.content_type_id
+      puts "Tumblr Type: #{post.content_type.tumblr_type_id}"
+      case post.content_type.tumblr_type_id
         when 1
           puts "Post Hotlink"
           response = client.photo(post.tumblr_subdomain, {caption: post.post_title, source: post.url})

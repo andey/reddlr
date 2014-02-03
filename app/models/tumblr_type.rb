@@ -9,4 +9,5 @@
 #
 
 class TumblrType < ActiveRecord::Base
+  has_many :content_types
 end
