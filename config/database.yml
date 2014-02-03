@@ -1,0 +1,26 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: reddlr
+  host: localhost
+  pool: 5
+  username: postgres
+  password: password
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: reddlr
+  host: localhost
+  pool: 5
+  username: postgres
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: reddlr_test
+  host: localhost
+  pool: 5
+  username: postgres
+  password: password

@@ -1,0 +1,3 @@
+== reddlr
+
+This app uses the reddit api to grab posts, select images, and post them tumblr.
