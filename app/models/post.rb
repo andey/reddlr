@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   belongs_to :sub
   belongs_to :whitelist
   belongs_to :content_type
-  validate_uniqueness_of :reddit_id
+  validates :reddit_id, uniqueness: true
 
   scope :queue, -> { where(submitted_at: nil).where.not(content_type_id: nil).order(:created_at) }
 
