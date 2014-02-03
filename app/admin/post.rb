@@ -19,7 +19,6 @@
 
 ActiveAdmin.register Post do
   config.sort_order = "created_at_desc"
-  actions :all, :except => [:destroy]
 
   filter :title
   filter :reddit_id
