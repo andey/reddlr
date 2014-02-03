@@ -19,9 +19,11 @@
 
 require 'json'
 class Post < ActiveRecord::Base
+  acts_as_taggable
   belongs_to :sub
-  belongs_to :whitelist
-  belongs_to :content_type
+  has_one :whitelist
+  has_one :content_type
+  has_one :tumblr_type, through: :content_type
 
   scope :queue, -> { where(submitted_at: nil).where.not(content_type_id: nil).order(:created_at) }
 
