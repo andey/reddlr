@@ -18,10 +18,12 @@ task :submit => :environment do
         when 1
           puts "Post Hotlink"
           response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, source: post.url})
+          puts response
           post.update_attributes(tumblr_id: response['id'])
         when 2
           puts "Post Downloaded Photo"
           response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, data: [open(post.url).path]})
+          puts response
           post.update_attributes(tumblr_id: response['id'])
         else
           puts "Do something Special"
