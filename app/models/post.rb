@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
   end
 
   def tumblr_subdomain
-    "reddlr-#{self.sub.name}.tumblr.com"
+    "reddlr-#{self.sub.name.downcase}.tumblr.com"
   end
 
 end
