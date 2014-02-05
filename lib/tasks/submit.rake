@@ -18,12 +18,12 @@ task :submit => :environment do
       case post.content_type.tumblr_type_id
         when 1
           puts "Post Hotlink"
-          #response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, source: post.url})
+          response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, source: post.url})
           puts response
           post.update_attributes(tumblr_id: response['id'])
         when 2
           puts "Post Downloaded Photo"
-          #response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, data: [open(post.url).path]})
+          response = client.photo(post.tumblr_subdomain, {caption: post.post_title, tags: post.sub.tag_list, data: [open(post.url).path]})
           puts response
           post.update_attributes(tumblr_id: response['id'])
         else
