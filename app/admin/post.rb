@@ -48,6 +48,7 @@ ActiveAdmin.register Post do
       row :submitted_at
       row :garbage
       row :json
+      row :response
     end
     active_admin_comments
   end
