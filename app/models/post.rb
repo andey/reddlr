@@ -56,7 +56,7 @@ class Post < ActiveRecord::Base
   end
 
   def post_title
-    "#{self.title} - <i>(<a href=\"http://reddlr.com/posts/#{self.reddit_id}/comments\">source</a>)</i>"
+    "#{self.title}"
   end
 
   def tumblr_subdomain
