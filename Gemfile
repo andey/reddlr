@@ -14,6 +14,7 @@ gem 'httparty'
 gem 'tumblr_client'
 gem 'crack'
 gem 'acts-as-taggable-on'
+gem 'unicorn'
 
 group :development do
   gem 'annotate'
