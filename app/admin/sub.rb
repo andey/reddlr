@@ -1,5 +1,5 @@
 ActiveAdmin.register Sub do
-  actions :all, :except => [:destroy]
+  actions :all
   filter :name
 
   controller do
