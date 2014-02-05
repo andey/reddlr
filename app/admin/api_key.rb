@@ -4,4 +4,14 @@ ActiveAdmin.register ApiKey do
       params.permit(:api_key => [:username, :consumer_key, :consumer_secret, :token, :token_secret])
     end
   end
+
+  index do
+    column :username
+    column :day_count
+    column :historical_count
+    column :updated_at
+    column :consumer_key
+    column :enabled
+    default_actions
+  end
 end
