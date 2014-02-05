@@ -15,6 +15,7 @@
 #  whitelist_id    :integer
 #  garbage         :boolean
 #  processed_at    :datetime
+#  response        :hstore
 #
 
 require 'json'
