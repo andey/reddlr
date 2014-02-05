@@ -19,6 +19,7 @@
 
 ActiveAdmin.register Post do
   config.sort_order = "created_at_desc"
+  actions :all, :except => [:create]
 
   filter :title
   filter :reddit_id
