@@ -33,7 +33,7 @@ ActiveAdmin.register Post do
     column :title
     column :content_type_id
     column :submitted_at
-    column :garbage
+    column :tumblr_id
     default_actions
   end
 
