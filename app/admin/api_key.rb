@@ -9,6 +9,7 @@ ActiveAdmin.register ApiKey do
     column :username
     column :day_count
     column :historical_count
+    column :reset_at
     column :updated_at
     column :consumer_key
     column :enabled

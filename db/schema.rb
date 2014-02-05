@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205005407) do
+ActiveRecord::Schema.define(version: 20140205010545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140205005407) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "api_keys", force: true do |t|
-    t.string   "username",                        null: false
+    t.string   "username",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "consumer_key"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140205005407) do
     t.integer  "day_count",        default: 0
     t.integer  "historical_count", default: 0
     t.boolean  "enabled",          default: true
+    t.datetime "reset_at",         default: '2014-02-05 01:08:36'
   end
 
   create_table "content_types", force: true do |t|
