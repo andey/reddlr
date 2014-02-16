@@ -27,24 +27,24 @@ ActiveAdmin.register_page "Dashboard" do
             end
             tr do
               td 'Successful Submits'
-              td Post.where.not(tumblr_id: nil, submitted_at: nil).count
-              td Post.where('submitted_at > ?', Date.today).where.not(tumblr_id: nil).count
-              td Post.where('submitted_at < ? and submitted_at > ?', Date.today, Date.today - 1.day).where.not(tumblr_id: nil).count
-              td Post.where('submitted_at < ? and submitted_at > ?', Date.today - 1.day, Date.today - 2.day).where.not(tumblr_id: nil).count
+              td Post.successful.count
+              td Post.successful.where('submitted_at > ?', Date.today).count
+              td Post.successful.where('submitted_at < ? and submitted_at > ?', Date.today, Date.today - 1.day).count
+              td Post.successful.where('submitted_at < ? and submitted_at > ?', Date.today - 1.day, Date.today - 2.day).count
             end
             tr do
               td 'Failed Submits'
-              td Post.where(tumblr_id: nil).where.not(submitted_at: nil).count
-              td Post.where('submitted_at > ?', Date.today).where(tumblr_id: nil).count
-              td Post.where('submitted_at < ? and submitted_at > ?', Date.today, Date.today - 1.day).where(tumblr_id: nil).count
-              td Post.where('submitted_at < ? and submitted_at > ?', Date.today - 1.day, Date.today - 2.day).where(tumblr_id: nil).count
+              td Post.failed.count
+              td Post.failed.where('submitted_at > ?', Date.today).count
+              td Post.failed.where('submitted_at < ? and submitted_at > ?', Date.today, Date.today - 1.day).count
+              td Post.failed.where('submitted_at < ? and submitted_at > ?', Date.today - 1.day, Date.today - 2.day).count
             end
             tr do
               td 'Garbage Posts'
-              td Post.where(garbage: true).count
-              td Post.where('created_at > ?', Date.today).where(garbage: true).count
-              td Post.where('created_at < ? and created_at > ?', Date.today, Date.today - 1.day).where(garbage: true).count
-              td Post.where('created_at < ? and created_at > ?', Date.today - 1.day, Date.today - 2.day).where(garbage: true).count
+              td Post.garbage.count
+              td Post.garbage.where('created_at > ?', Date.today).count
+              td Post.garbage.where('created_at < ? and created_at > ?', Date.today, Date.today - 1.day).count
+              td Post.garbage.where('created_at < ? and created_at > ?', Date.today - 1.day, Date.today - 2.day).count
             end
           end
         end
