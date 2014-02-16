@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140216051203) do
     t.integer  "day_count",        default: 0
     t.integer  "historical_count", default: 0
     t.boolean  "enabled",          default: true
-    t.datetime "reset_at",         default: '2014-02-05 01:08:36'
+    t.datetime "reset_at",         default: '2014-02-05 01:25:16'
   end
 
   create_table "content_types", force: true do |t|

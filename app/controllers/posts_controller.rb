@@ -35,7 +35,7 @@ class PostsController < ApplicationController
             },
             :redirect_urls => {
                 :return_url => execute_post_url(@post.tumblr_id), #"http://8nsl.t.proxylocal.com/posts/#{@post.tumblr_id}/execute"
-                :cancel_url => remove_post_url(@post.tumblr_id)
+                :cancel_url => removal_post_url(@post.tumblr_id)
             },
             :transactions => [
                 {
