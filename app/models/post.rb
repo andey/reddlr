@@ -27,6 +27,9 @@ class Post < ActiveRecord::Base
   validates :reddit_id, uniqueness: true
 
   scope :queue, -> { where(submitted_at: nil).where.not(content_type_id: nil).order(:created_at) }
+  scope :successful, -> { where.not(tumblr_id: nil, submitted_at: nil) }
+  scope :failed, -> { where(tumblr_id: nil).where.not(submitted_at: nil) }
+  scope :garbage, -> { where(garbage: true) }
 
   # Filter out reddit self posts from the start
   before_save :check_if_self_post, :check_content_type, :check_whitelist

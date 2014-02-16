@@ -21,17 +21,24 @@ ActiveAdmin.register Post do
   config.sort_order = "created_at_desc"
   actions :all, :except => [:create, :new]
 
+  scope :all, default: true
+  scope :queue
+  scope :successful
+  scope :failed
+  scope :garbage
+
   controller do
     def permitted_params
       params.permit(:post => [:title, :sub_id, :content_type_id, :whitelist_id, :tumblr_id])
     end
   end
 
+  filter :sub
+  filter :content_type
+  filter :whitelist
   filter :title
   filter :reddit_id
-  filter :sub
-  filter :content_type_id
-  filter :garbage
+  filter :tumblr_id
 
   index do
     column :created_at
