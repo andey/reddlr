@@ -52,11 +52,15 @@ class Post < ActiveRecord::Base
   end
 
   def remove
-    self.update_attribute(:removed_at, Time.now)
+    api_key = ApiKey.where(enabled: true).order(:updated_at).first
+    client = api_key.tumblr_client
+    if client.delete(self.tumblr_subdomain, self.tumblr_id)
+      self.update_attribute(:removed_at, Time.now)
+    end
   end
 
   def url
-   self.json['url']
+    self.json['url']
   end
 
   def source
