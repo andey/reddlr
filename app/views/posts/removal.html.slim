@@ -1,0 +1,38 @@
+h2 Content Removal Request
+.jumbotron
+  h2= @post.title
+  p= "Tumblr ID: #{@post.tumblr_id}"
+  p style="font-size: 11px"
+    = "Source: http://reddit.com#{@post.json['permalink']}"
+
+- if @post.removed_at
+  .alert.alert-warning.text-center
+    = "This post has been removed from tumblr on #{@post.removed_at}"
+
+- else
+  .row
+    .col-lg-12
+      h4 Notice:
+      .alert.alert-info
+        | If you own the rights to the content and you submitted the content to reddit.com, reddlr has <strong>ZERO</strong> legal obligation to remove this content.
+        a href="http://www.reddit.com/help/useragreement#p_18"  reddit TOS
+        |  paragraph #18 clearly states:
+      blockquote style="font-size: 12px;"
+        | By submitting User Content to reddit, you grant us a royalty-free, perpetual, irrevocable, non-exclusive, unrestricted, worldwide license to reproduce, prepare derivative works, distribute copies, perform, or publicly display your User Content in any medium and for any purpose, including commercial purposes, <strong style="color: red;">and to authorize others to do so</strong>.
+
+    .row.marketing
+      .col-lg-6
+        h4
+          | Option #1 &nbsp;
+          small Manual Request (FREE)
+        p Send an email to the webmaster and get your content removed within 24 hours.
+        textarea style="width: 100%; height: 125px;" placeholder="In a short sentence or two, please explain why you would like this content removed."
+        input class="btn btn-primary btn-block" type="submit" value="Send Request"
+
+      .col-lg-6
+        h4
+          | Option #2 &nbsp;
+          small Instant Removal ($1 USD)
+        p style="margin-bottom: 25px;" Delete the tumblr post instantly after a payment of $1.00. The one dollar fee is to prevent automatic malicious content deletion.
+        p.text-center
+          = link_to (image_tag 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif'), pay_post_path(@post.tumblr_id)

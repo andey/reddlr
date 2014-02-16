@@ -15,6 +15,8 @@ gem 'tumblr_client'
 gem 'crack'
 gem 'acts-as-taggable-on'
 gem 'unicorn'
+gem 'slim-rails'
+gem 'paypal-sdk-rest'
 
 group :development do
   gem 'annotate'

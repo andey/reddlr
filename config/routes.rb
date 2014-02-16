@@ -4,6 +4,12 @@ Reddlr::Application.routes.draw do
   resources :posts do
     member do
       get 'comments'
+      get 'removal'
+      get 'pay'
+      get 'execute'
+    end
+    collection do
+      get 'complete'
     end
   end
   resources :subreddits do
@@ -12,4 +18,5 @@ Reddlr::Application.routes.draw do
       get 'javascript'
     end
   end
+  root 'subreddits#index'
 end

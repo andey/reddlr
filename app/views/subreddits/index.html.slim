@@ -1,0 +1,4 @@
+.row
+  ul
+    - @subs.each do |sub|
+      li= link_to "r/#{sub.name}", "http://#{sub.name}.reddlr.com"

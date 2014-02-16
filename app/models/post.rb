@@ -51,8 +51,16 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def remove
+    self.update_attribute(:removed_at, Time.now)
+  end
+
   def url
    self.json['url']
+  end
+
+  def reddit_url
+    "http://reddlr.com/posts/#{self.reddit_id}/comments"
   end
 
   def post_title

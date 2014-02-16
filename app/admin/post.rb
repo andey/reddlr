@@ -21,6 +21,12 @@ ActiveAdmin.register Post do
   config.sort_order = "created_at_desc"
   actions :all, :except => [:create, :new]
 
+  controller do
+    def permitted_params
+      params.permit(:post => [:title, :sub_id, :content_type_id, :whitelist_id, :tumblr_id])
+    end
+  end
+
   filter :title
   filter :reddit_id
   filter :sub
@@ -51,5 +57,22 @@ ActiveAdmin.register Post do
       row :response
     end
     active_admin_comments
+  end
+
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+
+    f.inputs do
+      f.input :title
+      f.input :sub
+      f.input :content_type
+      f.input :whitelist
+      f.input :tumblr_id
+    end
+
+    f.actions do
+      f.action :submit
+      f.action :cancel
+    end
   end
 end

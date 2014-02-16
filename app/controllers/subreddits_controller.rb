@@ -1,13 +1,16 @@
 class SubredditsController < ApplicationController
-  layout false
+
+  def index
+    @subs = Sub.all
+  end
 
   def stylesheet
     sub = Sub.find_by(name: params[:id])
-    render text: sub.css, content_type: 'text/css'
+    render text: sub.css, content_type: 'text/css', layout: false
   end
 
   def javascript
     sub = Sub.find_by(name: params[:id])
-    render js: sub.js
+    render js: sub.js, layout: false
   end
 end

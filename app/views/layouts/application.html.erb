@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reddlr</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
-
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <h3><%= link_to 'reddlr', '/' %>
+      <small>reddit in a tumblr format</small>
+    </h3>
+  </div>
+  <% if flash[:notice] %>
+      <div class="alert alert-danger">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <%= yield %>
+  <div class="footer">
+    <p>Copyright &copy; 2014 <a href="http://sk3tchy.com">SK3TCHY Entertainment</a>, All rights reserved.</p>
+  </div>
+</div>
 </body>
 </html>
