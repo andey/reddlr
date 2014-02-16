@@ -4,7 +4,7 @@ include PayPal::SDK::REST
 class PostsController < ApplicationController
   def comments
     post = Post.find_by(tummblr_id: params[:id])
-    redirect_to 'http://reddit.com' + post.json['permalink']
+    redirect_to post.source
   end
 
   def removal

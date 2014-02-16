@@ -59,6 +59,10 @@ class Post < ActiveRecord::Base
    self.json['url']
   end
 
+  def source
+    self.json['permalink']
+  end
+
   def reddit_url
     "http://reddlr.com/posts/#{self.reddit_id}/comments"
   end
