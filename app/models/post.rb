@@ -68,7 +68,7 @@ class Post < ActiveRecord::Base
   end
 
   def post_title
-    "#{self.title}"
+    self.title
   end
 
   def tumblr_subdomain
