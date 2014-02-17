@@ -16,4 +16,5 @@ class Sub < ActiveRecord::Base
   scope :disabled, -> { where(enabled: false) }
   scope :nsfw, -> { where(nsfw: true) }
   scope :sfw, -> { where(nsfw: false) }
+  has_many :posts, dependent: :destroy
 end
