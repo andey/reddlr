@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216051203) do
+ActiveRecord::Schema.define(version: 20140217042536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,11 +92,13 @@ ActiveRecord::Schema.define(version: 20140216051203) do
   add_index "posts", ["reddit_id"], name: "index_posts_on_reddit_id", unique: true, using: :btree
 
   create_table "subs", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "css"
     t.text     "js"
+    t.boolean  "enabled",    default: true
+    t.boolean  "nsfw",       default: false
   end
 
   create_table "taggings", force: true do |t|

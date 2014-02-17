@@ -12,4 +12,8 @@
 
 class Sub < ActiveRecord::Base
   acts_as_taggable
+  scope :enabled, -> { where(enabled: true) }
+  scope :disabled, -> { where(enabled: false) }
+  scope :nsfw, -> { where(nsfw: true) }
+  scope :sfw, -> { where(nsfw: false) }
 end

@@ -1,7 +1,7 @@
 require 'api/reddit'
 task :enqueue => :environment do
   reddit = Reddit.new
-  subreddit = Sub.order(:updated_at).first
+  subreddit = Sub.enabled.order(:updated_at).first
   subreddit.touch()
   response = reddit.get_sub(subreddit.name)
 

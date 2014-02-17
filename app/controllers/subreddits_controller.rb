@@ -1,7 +1,8 @@
 class SubredditsController < ApplicationController
 
   def index
-    @subs = Sub.all
+    @subs = Sub.enabled.sfw
+    @subsX = Sub.enabled.nsfw
   end
 
   def stylesheet
