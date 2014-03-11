@@ -1,3 +1,5 @@
 == reddlr
+{<img src="https://gemnasium.com/andey/reddlr.png" alt="Dependency Status" />}[https://gemnasium.com/andey/reddlr]
+{<img src="https://codeclimate.com/github/andey/reddlr.png" />}[https://codeclimate.com/github/andey/reddlr]
 
 This app uses the reddit api to grab posts, select images, and post them tumblr.
