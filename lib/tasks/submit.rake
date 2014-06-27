@@ -10,7 +10,7 @@ task :submit => :environment do
     puts post.title
     puts post.url
     puts post.sub.tag_list.join(', ')
-    api_key = ApiKey.where(enabled: true).order(:updated_at).first
+    api_key = ApiKey.where(enabled: true).order("RANDOM()").first
     client = api_key.tumblr_client
 
     begin
