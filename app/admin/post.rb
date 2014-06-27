@@ -47,7 +47,7 @@ ActiveAdmin.register Post do
     column :content_type_id
     column :submitted_at
     column :tumblr_id
-    default_actions
+    actions
   end
 
   show do |ama|
