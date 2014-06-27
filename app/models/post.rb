@@ -26,6 +26,7 @@ class Post < ActiveRecord::Base
   belongs_to :content_type
   validates :reddit_id, uniqueness: true
 
+  scope :random_queue, -> { where(submitted_at: nil).where.not(content_type_id: nil).order('RANDOM()') }
   scope :queue, -> { where(submitted_at: nil).where.not(content_type_id: nil).order(:created_at) }
   scope :successful, -> { where.not(tumblr_id: nil, submitted_at: nil) }
   scope :failed, -> { where(tumblr_id: nil).where.not(submitted_at: nil) }

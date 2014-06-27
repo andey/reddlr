@@ -5,7 +5,7 @@ task :submit => :environment do
   puts '-------------'
   puts 'Stating Submit'
 
-  if post = Post.queue.first
+  if post = Post.random_queue.first
 
     puts post.title
     puts post.url
