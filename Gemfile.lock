@@ -229,7 +229,7 @@ DEPENDENCIES
   paypal-sdk-rest
   pg
   rails
-  sass-rails
+  sass-rails (= 4.0.3)
   sdoc
   slim-rails
   tumblr_client
