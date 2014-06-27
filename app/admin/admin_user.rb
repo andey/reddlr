@@ -6,7 +6,7 @@ ActiveAdmin.register AdminUser do
     column :sign_in_count
     column :whatever
 
-    default_actions
+    actions
   end
 
   filter :email

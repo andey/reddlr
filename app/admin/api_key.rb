@@ -13,6 +13,6 @@ ActiveAdmin.register ApiKey do
     column :updated_at
     column :consumer_key
     column :enabled
-    default_actions
+    actions
   end
 end

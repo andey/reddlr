@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '~> 4.0.5'
+gem 'rails'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -17,7 +17,8 @@ gem 'acts-as-taggable-on'
 gem 'unicorn'
 gem 'slim-rails'
 gem 'paypal-sdk-rest'
-gem 'mime-types', '1.25.1'
+gem 'mime-types'
+gem 'devise'
 
 group :development do
   gem 'annotate'
