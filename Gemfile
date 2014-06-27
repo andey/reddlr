@@ -4,7 +4,7 @@ ruby '2.1.2'
 
 gem 'rails'
 gem 'pg'
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -19,6 +19,7 @@ gem 'slim-rails'
 gem 'paypal-sdk-rest'
 gem 'mime-types'
 gem 'devise'
+gem 'faraday', '0.8.0'
 
 group :development do
   gem 'annotate'
