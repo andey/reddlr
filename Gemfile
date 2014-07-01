@@ -20,6 +20,7 @@ gem 'paypal-sdk-rest'
 gem 'mime-types'
 gem 'devise'
 gem 'faraday', '0.8.0'
+gem 'clockwork'
 
 group :development do
   gem 'annotate'
