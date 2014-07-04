@@ -19,7 +19,7 @@ gem 'slim-rails'
 gem 'paypal-sdk-rest'
 gem 'mime-types'
 gem 'devise'
-gem 'faraday', '0.8.0'
+gem 'faraday'
 gem 'clockwork'
 
 group :development do
