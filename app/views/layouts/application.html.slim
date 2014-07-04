@@ -1,0 +1,29 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    title Reddlr
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          h1
+            = link_to 'reddlr', root_path
+            small style='margin-left: 10px;' reddit in a tumblr format
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.pull-right
+            li= link_to 'Source Code', 'https://github.com/andey/reddlr'
+            li= link_to 'Contact', 'https://twitter.com/andey_'
+
+    .container.main
+      = yield
+
+    .footer style="width: 100%; position: absolute; bottom: 0px;"
+      p.text-center= link_to 'SK3TCHY Entertainment', 'http://sk3tchy.com', style: 'margin-left: 5px;'
