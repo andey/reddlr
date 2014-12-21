@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.1.5'
 
 gem 'rails'
 gem 'pg'
@@ -21,6 +21,7 @@ gem 'mime-types'
 gem 'devise'
 gem 'faraday'
 gem 'clockwork'
+gem 'therubyracer'
 
 group :development do
   gem 'annotate'
