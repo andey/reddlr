@@ -27,3 +27,7 @@ group :development do
   gem 'annotate'
   gem 'awesome_print'
 end
+
+group :heroku do
+  gem 'rails_12factor'
+end
