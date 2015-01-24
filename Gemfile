@@ -27,7 +27,3 @@ group :development do
   gem 'annotate'
   gem 'awesome_print'
 end
-
-group :doc do
-  gem 'sdoc', require: false
-end
